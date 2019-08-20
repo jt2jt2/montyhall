@@ -17,18 +17,18 @@ class MontyHall
 
 	#答えをセットする
 	def set_ans
-		@doors_content[rand(3)] =:prize
-		3.times{|i| @doors_content[i] ||= :miss}
+	    @doors_content[rand(3)] =:prize
+	    3.times{|i| @doors_content[i] ||= :miss}
 	end
 
 	#ゲストが引く、ランダムでソートされているのでトップをポップする
 	def guest_pick
-		@guest_pick = @doors.pop
+	    @guest_pick = @doors.pop
 	end
 
 	#モンティがハズレを見せる（ミスを選ぶ）
 	def monty_pick
-		door_a, door_b = @doors.sort_by { rand }
+	    door_a, door_b = @doors.sort_by { rand }
 
 	    if @doors_content[door_a].eql?(:miss)
 	      @monty_pick, @remaining_door = door_a, door_b
@@ -39,7 +39,7 @@ class MontyHall
 
 	#交換処理
 	def guest_decide_to_switch_or_not(do_switch = @do_switch)
-		@guest_pick,@remaining_door  =  @remaining_door,@guest_pick  if  @do_switch
+	    @guest_pick,@remaining_door  =  @remaining_door,@guest_pick  if  @do_switch
   	end
 
   	#正誤判定
